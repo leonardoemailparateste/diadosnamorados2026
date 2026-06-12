@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Dia dos Namorados ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            font-family: 'Segoe UI', sans-serif;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+            position: relative;
+
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        h1 {
+            color: white;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 15px;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, .3);
+        }
+
+        .subtitle {
+            color: white;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 25px;
+            opacity: .95;
+        }
+
+        .photo-frame {
+            width: 100%;
+            height: min(70vh, 700px);
+
+            background: rgba(255, 255, 255, 0.95);
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.25);
+
+            position: relative;
+            overflow: hidden;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 15px;
+        }
+
+        .photo-frame img {
+            position: absolute;
+
+            max-width: calc(100% - 30px);
+            max-height: calc(100% - 30px);
+
+            width: auto;
+            height: auto;
+
+            object-fit: contain;
+
+            border-radius: 15px;
+
+            opacity: 0;
+
+            transition: opacity 1.5s ease;
+
+            transform: scale(1);
+        }
+
+        .photo-frame img.active {
+            opacity: 1;
+            animation: kenburns 6s ease-in-out forwards;
+        }
+
+        @keyframes kenburns {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.06);
+            }
+        }
+
+        .message {
+            margin-top: 25px;
+            color: white;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            font-weight: 300;
+            text-shadow: 0 2px 8px rgba(0,0,0,.25);
+        }
+
+        .signature {
+            margin-top: 12px;
+            color: white;
+            font-style: italic;
+            opacity: 0.9;
+            font-size: clamp(.9rem, 2vw, 1.1rem);
+        }
+
+        .heart {
+            position: absolute;
+            user-select: none;
+            pointer-events: none;
+
+            color: rgba(255, 255, 255, 0.75);
+
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(110vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(-20vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .photo-frame {
+                height: 60vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .photo-frame {
+                height: 50vh;
+            }
+
+            .message {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="hearts"></div>
+
+    <div class="container">
+
+        <h1>❤️ Feliz Dia dos Namorados ❤️</h1>
+
+        <p class="subtitle">
+            Cada foto guarda um pedacinho da nossa história...
+        </p>
+
+        <div class="photo-frame" id="photo-frame"></div>
+
+        <div class="message">
+            Obrigado por fazer meus dias mais felizes, mais leves e mais especiais. ❤️ <br>
+             ❤️ Dedicado especialmente a você ❤️
+        </div>
+        <div class="signature">
+            Com todo meu amor ❤️
+        </div>
+
+
+        <div class="signature">
+            <div style="margin-top: 10px;">
+                <strong>De:</strong> Leonardo <strong>Para:</strong> Jamille Izabel
+            </div>
+
+    </div>
+
+    <script>
+
+        /*
+         * Adicione aqui suas fotos.
+         * Pode misturar jpeg, JPEG e jpeg.
+         */
+const imageFiles = [
+    "fotos/foto1.jpeg",
+    "fotos/foto2.jpeg",
+    "fotos/foto3.jpeg",
+    "fotos/foto4.jpeg",
+    "fotos/foto5.jpeg",
+    "fotos/foto6.jpeg",
+    "fotos/foto7.jpeg",
+    "fotos/foto8.jpeg",
+    "fotos/foto9.jpeg",
+    "fotos/foto10.jpeg",
+    "fotos/foto11.jpeg",
+    "fotos/foto12.jpeg",
+    "fotos/foto13.jpeg",
+    "fotos/foto15.jpeg",
+    "fotos/foto16.jpeg",
+    "fotos/foto17.jpeg",
+    "fotos/foto18.jpeg",
+    "fotos/foto19.jpeg",
+    "fotos/foto20.jpeg",
+    "fotos/foto21.jpeg",
+    "fotos/foto22.jpeg",
+    "fotos/foto23.jpeg",
+    "fotos/foto24.jpeg",
+    "fotos/foto25.jpeg",
+    "fotos/foto26.jpeg",
+    "fotos/foto27.jpeg",
+    "fotos/foto28.jpeg",
+    "fotos/foto29.jpeg",
+    "fotos/foto30.jpeg",
+    "fotos/foto31.jpeg",
+    "fotos/foto32.jpeg",
+    "fotos/foto33.jpeg",
+    "fotos/foto34.jpeg",
+    "fotos/foto35.jpeg",
+    "fotos/foto36.jpeg",
+    "fotos/foto37.jpeg",
+    "fotos/foto38.jpeg",
+    "fotos/foto39.jpeg",
+    "fotos/foto40.jpeg",
+    "fotos/foto41.jpeg",
+    "fotos/foto42.jpeg",
+    "fotos/foto43.jpeg",
+    "fotos/foto44.jpeg",
+    "fotos/foto45.jpeg",
+    "fotos/foto46.jpeg",
+    "fotos/foto47.jpeg",
+    "fotos/foto48.jpeg",
+    "fotos/foto49.jpeg",
+    "fotos/foto50.jpeg",
+    "fotos/foto51.jpeg",
+    "fotos/foto52.jpeg",
+    "fotos/foto53.jpeg",
+    "fotos/foto54.jpeg",
+    "fotos/foto55.jpeg",
+    "fotos/foto56.jpeg",
+    "fotos/foto57.jpeg",
+    "fotos/foto58.jpeg",
+    "fotos/foto59.jpeg",
+    "fotos/foto60.jpeg",
+    "fotos/foto61.jpeg",
+    "fotos/foto62.jpeg",
+    "fotos/foto63.jpeg",
+    "fotos/foto64.jpeg",
+    "fotos/foto65.jpeg",
+    "fotos/foto66.jpeg",
+    "fotos/foto67.jpeg",
+    "fotos/foto68.jpeg",
+    "fotos/foto69.jpeg",
+    "fotos/foto70.jpeg",
+    "fotos/foto71.jpeg",
+    "fotos/foto72.jpeg",
+    "fotos/foto73.jpeg",
+    "fotos/foto74.jpeg",
+    "fotos/foto75.jpeg",
+    "fotos/foto76.jpeg",
+    "fotos/foto77.jpeg",
+    "fotos/foto78.jpeg",
+    "fotos/foto79.jpeg",
+    "fotos/foto80.jpeg",
+    "fotos/foto81.jpeg",
+    "fotos/foto82.jpeg",
+    "fotos/foto83.jpeg"
+];
+
+
+
+        const frame = document.getElementById("photo-frame");
+
+        imageFiles.forEach((src, index) => {
+
+            const img = document.createElement("img");
+
+            img.src = src;
+
+            if (index === 0) {
+                img.classList.add("active");
+            }
+
+            frame.appendChild(img);
+        });
+
+        const photos = document.querySelectorAll(".photo-frame img");
+
+        let current = 0;
+
+        setInterval(() => {
+
+            photos[current].classList.remove("active");
+
+            current = (current + 1) % photos.length;
+
+            photos[current].classList.add("active");
+
+        }, 3000);
+
+        // Corações animados
+
+        const heartsContainer = document.getElementById("hearts");
+
+        function createHeart() {
+
+            const heart = document.createElement("div");
+
+            heart.innerHTML = "❤️";
+            heart.className = "heart";
+
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (Math.random() * 25 + 15) + "px";
+            heart.style.animationDuration = (Math.random() * 8 + 8) + "s";
+
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 16000);
+        }
+
+        setInterval(createHeart, 300);
+
+    </script>
+
+</body>
+
+</html>
+
